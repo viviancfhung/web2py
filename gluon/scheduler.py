@@ -504,7 +504,7 @@ def executor(retq, task, outq):
             globals().update(_env)
             args = _decode_list(loads(task.args))
             vars = loads(task.vars, object_hook=_decode_dict)
-            result = dumps(_function(*args, **vars))
+            result = dumps(_function(*args, **vars)[0])
         else:
             # for testing purpose only
             result = eval(task.function)(
